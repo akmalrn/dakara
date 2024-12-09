@@ -1,0 +1,151 @@
+@extends('backend.layout')
+
+@section('content')
+    <div class="container mt-10 ">
+        <div class="row justify-content-center">
+            <div class="col-md-11">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">Configuration Settings</div>
+
+                    <div class="card-body">
+                        <form action="{{ route('configuration.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+
+                            <!-- Path Gambar -->
+                            <div class="row">
+                                <!-- Path Gambar -->
+                                <div class="col-md mb-3">
+                                    <label for="path" class="form-label">Website Image</label>
+                                    <input type="file" name="path" id="path"
+                                        class="form-control @error('path') is-invalid @enderror"
+                                        onchange="previewImage('path', 'pathPreview')">
+                                    @error('path')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                    <!-- Cek jika gambar ada di database, tampilkan -->
+                                    @if (isset($configuration->path))
+                                        <img id="pathPreview" src="{{ asset($configuration->path) }}" alt="Gambar Lama"
+                                            class="mt-2" style="max-width: 200px;">
+                                    @else
+                                        <img id="pathPreview" src="" alt="Preview Gambar" class="mt-2"
+                                            style="max-width: 200px; display: none;">
+                                    @endif
+                                </div>
+
+                                <!-- Path Logo -->
+                                <div class="col-md mb-3">
+                                    <label for="path_logo" class="form-label">Title Image</label>
+                                    <input type="file" name="path_logo" id="path_logo"
+                                        class="form-control @error('path_logo') is-invalid @enderror"
+                                        onchange="previewImage('path_logo', 'pathLogoPreview')">
+                                    @error('path_logo')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                    <!-- Cek jika logo ada di database, tampilkan -->
+                                    @if (isset($configuration->path_logo))
+                                        <img id="pathLogoPreview" src="{{ asset($configuration->path_logo) }}"
+                                            alt="Logo Lama" class="mt-2" style="max-width: 200px;">
+                                    @else
+                                        <img id="pathLogoPreview" src="" alt="Preview Logo" class="mt-2"
+                                            style="max-width: 200px; display: none;">
+                                    @endif
+                                </div>
+                            </div>
+
+                            <!-- Website Name -->
+                            <div class="row">
+                                <div class="col-md mb-3">
+                                    <label for="website_name" class="form-label">Website Name</label>
+                                    <input type="text" name="website_name"
+                                        class="form-control @error('website_name') is-invalid @enderror"
+                                        value="{{ old('website_name', $configuration->website_name ?? '') }}">
+                                    @error('website_name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md mb-3">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" name="title"
+                                        class="form-control @error('title') is-invalid @enderror"
+                                        value="{{ old('title', $configuration->title ?? '') }}">
+                                    @error('title')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md mb-3">
+                                    <label for="phone_number" class="form-label">Phone Number</label>
+                                    <input type="text" name="phone_number"
+                                        class="form-control @error('phone_number') is-invalid @enderror"
+                                        value="{{ old('phone_number', $configuration->phone_number ?? '') }}"
+                                        pattern="\d*" inputmode="numeric">
+                                    @error('phone_number')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md mb-3">
+                                    <label for="email_address" class="form-label">Email Address</label>
+                                    <input type="email" name="email_address"
+                                        class="form-control @error('email_address') is-invalid @enderror"
+                                        value="{{ old('email_address', $configuration->email_address ?? '') }}">
+                                    @error('email_address')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md mb-3">
+                                <label for="map" class="form-label">Map</label>
+                                <input type="text" name="map" class="form-control @error('map') is-invalid @enderror"
+                                    value="{{ old('map', $configuration->map ?? '') }}">
+                                @error('map')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md mb-3">
+                                    <label for="meta_keywords" class="form-label">Meta Keywords</label>
+                                    <textarea name="meta_keywords" class="form-control @error('meta_keywords') is-invalid @enderror">{{ old('meta_keywords', $configuration->meta_keywords ?? '') }}</textarea>
+                                    @error('meta_keywords')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md mb-3">
+                                    <label for="meta_descriptions" class="form-label">Meta Descriptions</label>
+                                    <textarea name="meta_descriptions" class="form-control @error('meta_descriptions') is-invalid @enderror">{{ old('meta_descriptions', $configuration->meta_descriptions ?? '') }}</textarea>
+                                    @error('meta_descriptions')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="col-md mb-3">
+                                <label for="footer" class="form-label">Footer</label>
+                                <input type="text" name="footer"
+                                    class="form-control @error('footer') is-invalid @enderror"
+                                    value="{{ old('footer', $configuration->footer ?? '') }}">
+                                @error('footer')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <!-- Tambahkan input lainnya sesuai kebutuhan -->
+
+                            <!-- Tombol Submit -->
+                            <button type="submit" class="btn btn-primary w-100">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
