@@ -117,8 +117,7 @@
                 <!-- Logo Header -->
                 <div class="logo-header" data-background-color="dark">
                     <a href="index.html" class="logo" style="color: white">
-                        <img src="{{ asset('Wan Logo.png') }}" alt="navbar brand" class="navbar-brand"
-                            height="30" />
+                        <img src="{{ asset('Wan Logo.png') }}" alt="navbar brand" class="navbar-brand" height="30" />
                         <div class="ms-2"> Wan Teknologi </div>
                     </a>
                     <div class="nav-toggle">
@@ -168,7 +167,8 @@
                                 <span class="badge badge-secondary"></span>
                             </a>
                         </li>
-                        <li class="nav-item {{ Request::is('admin-dashboard/slider', 'admin-dashboard/slider/create', 'admin-dashboard/slider/*/edit') ? 'active' : '' }}">
+                        <li
+                            class="nav-item {{ Request::is('admin-dashboard/slider', 'admin-dashboard/slider/create', 'admin-dashboard/slider/*/edit') ? 'active' : '' }}">
                             <a href="{{ route('slider.index') }}">
                                 <i class="fas fa-sliders-h"></i>
                                 <p>Slider</p>
@@ -184,7 +184,8 @@
                             </a>
                         </li>
 
-                        <li class="nav-item {{ Request::is('admin-dashboard/superiority', 'admin-dashboard/superiority/create', 'admin-dashboard/superiority/*/edit') ? 'active' : '' }}">
+                        <li
+                            class="nav-item {{ Request::is('admin-dashboard/superiority', 'admin-dashboard/superiority/create', 'admin-dashboard/superiority/*/edit') ? 'active' : '' }}">
                             <a href="{{ route('superiority.index') }}">
                                 <i class="fas fa-medal"></i>
                                 <p>Superiority</p>
@@ -200,7 +201,8 @@
                             </a>
                         </li>
 
-                        <li class="nav-item {{ Request::is('admin-dashboard/services', 'admin-dashboard/services/create', 'admin-dashboard/services/*/edit', 'admin-dashboard/categories-services/create',  'admin-dashboard/categories-services/*/edit') ? 'active' : '' }}">
+                        <li
+                            class="nav-item {{ Request::is('admin-dashboard/services', 'admin-dashboard/services/create', 'admin-dashboard/services/*/edit', 'admin-dashboard/categories-services/create', 'admin-dashboard/categories-services/*/edit') ? 'active' : '' }}">
                             <a href="{{ route('services.index') }}">
                                 <i class="fas fa-hand-holding"></i>
                                 <p>Services</p>
@@ -208,7 +210,8 @@
                             </a>
                         </li>
 
-                        <li class="nav-item {{ Request::is('admin-dashboard/gallery', 'admin-dashboard/gallery/create', 'admin-dashboard/gallery/*/edit') ? 'active' : '' }}">
+                        <li
+                            class="nav-item {{ Request::is('admin-dashboard/gallery', 'admin-dashboard/gallery/create', 'admin-dashboard/gallery/*/edit') ? 'active' : '' }}">
                             <a href="{{ route('gallery.index') }}">
                                 <i class="fas fa-images"></i>
                                 <p>Gallery</p>
@@ -216,7 +219,8 @@
                             </a>
                         </li>
 
-                        <li class="nav-item {{ Request::is('admin-dashboard/partner', 'admin-dashboard/partner/create', 'admin-dashboard/partner/*/edit') ? 'active' : '' }}">
+                        <li
+                            class="nav-item {{ Request::is('admin-dashboard/partner', 'admin-dashboard/partner/create', 'admin-dashboard/partner/*/edit') ? 'active' : '' }}">
                             <a href="{{ route('partner.index') }}">
                                 <i class="fas fa-handshake"></i>
                                 <p>Partner</p>
@@ -224,7 +228,8 @@
                             </a>
                         </li>
 
-                        <li class="nav-item {{ Request::is('admin-dashboard/blogs', 'admin-dashboard/blogs/create', 'admin-dashboard/blogs/*/edit', 'admin-dashboard/categories-blogs/create',  'admin-dashboard/categories-blogs/*/edit') ? 'active' : '' }}">
+                        <li
+                            class="nav-item {{ Request::is('admin-dashboard/blogs', 'admin-dashboard/blogs/create', 'admin-dashboard/blogs/*/edit', 'admin-dashboard/categories-blogs/create', 'admin-dashboard/categories-blogs/*/edit') ? 'active' : '' }}">
                             <a href="{{ route('blogs.index') }}">
                                 <i class="fas fa-pen"></i>
                                 <p>Blog</p>
@@ -232,7 +237,8 @@
                             </a>
                         </li>
 
-                        <li class="nav-item {{ Request::is('admin-dashboard/testimonials-clients', 'admin-dashboard/testimonials-clients/create', 'admin-dashboard/testimonials-clients/*/edit') ? 'active' : '' }}">
+                        <li
+                            class="nav-item {{ Request::is('admin-dashboard/testimonials-clients', 'admin-dashboard/testimonials-clients/create', 'admin-dashboard/testimonials-clients/*/edit') ? 'active' : '' }}">
                             <a href="{{ route('testimonials-clients.index') }}">
                                 <i class="fas fa-user"></i>
                                 <p>Testimonial</p>
@@ -240,10 +246,18 @@
                             </a>
                         </li>
 
-                        <li class="nav-item {{ Request::is('admin-dashboard/teams', 'admin-dashboard/teams/create', 'admin-dashboard/teams/*/edit') ? 'active' : '' }}">
+                        <li
+                            class="nav-item {{ Request::is('admin-dashboard/teams', 'admin-dashboard/teams/create', 'admin-dashboard/teams/*/edit') ? 'active' : '' }}">
                             <a href="{{ route('teams.index') }}">
                                 <i class="fas fa-user-circle"></i>
                                 <p>Team</p>
+                                <span class="badge badge-secondary"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ Request::is('admin-dashboard/contact') ? 'active' : '' }}">
+                            <a href="{{ route('contact.index') }}">
+                                <i class="fas fa-address-book"></i>
+                                <p>Contact</p>
                                 <span class="badge badge-secondary"></span>
                             </a>
                         </li>
@@ -259,7 +273,8 @@
                     <!-- Logo Header -->
                     <div class="logo-header" data-background-color="dark">
                         <a href="{{ url('index.html') }}" class="logo">
-                            <img src="{{ asset('assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand" height="20" />
+                            <img src="{{ asset('assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand"
+                                class="navbar-brand" height="20" />
                         </a>
                         <div class="nav-toggle">
                             <button class="btn btn-toggle toggle-sidebar">
@@ -278,7 +293,8 @@
                 <!-- Navbar Header -->
                 <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
                     <div class="container-fluid">
-                        <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+                        <nav
+                            class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
                             <form action="" method="GET" id="pageDropdownForm">
                                 <div class="input-group">
                                     <select class="form-control" id="pageDropdown" onchange="navigateToPage()">
@@ -310,7 +326,8 @@
 
                         <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
                             <li class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" aria-haspopup="true">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                                    role="button" aria-expanded="false" aria-haspopup="true">
                                     <i class="fa fa-search"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-search animated fadeIn">
@@ -323,7 +340,8 @@
                             </li>
 
                             <li class="nav-item topbar-user dropdown hidden-caret">
-                                <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#" aria-expanded="false">
+                                <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#"
+                                    aria-expanded="false">
                                     <div class="avatar-sm">
                                         <i class="fas fa-user-shield avatar-img rounded" style="font-size: 30px;"></i>
                                     </div>
@@ -337,7 +355,8 @@
                                         <li>
                                             <div class="user-box">
                                                 <div class="avatar-lg">
-                                                    <i class="fas fa-user-shield avatar-img rounded" style="font-size: 30px;"></i>
+                                                    <i class="fas fa-user-shield avatar-img rounded"
+                                                        style="font-size: 30px;"></i>
                                                 </div>
                                                 <div class="u-text">
                                                     <h4>{{ auth()->user()->name }}</h4>
@@ -346,12 +365,14 @@
                                             </div>
                                         </li>
                                         <li>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
                                                 @csrf
                                             </form>
 
                                             <!-- Logout Link -->
-                                            <a class="dropdown-item" href="#" onclick="confirmLogout()">Logout</a>
+                                            <a class="dropdown-item" href="#"
+                                                onclick="confirmLogout()">Logout</a>
                                         </li>
                                     </div>
                                 </ul>
