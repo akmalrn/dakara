@@ -15,13 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('frontend/index');
+    return redirect()->route('index');
 });
 
-Route::post('/welcome', [AuthController::class, 'login'])->name('login');
+Route::get('/welcome', [AuthController::class, 'welcome'])->name('welcome');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function () {
     Route::get('/admin-dashboard', [App\Http\Controllers\admin\AdminController::class, 'index'])->name('admin.dashboard');
 
     //configuration
@@ -63,4 +64,20 @@ Route::middleware(['auth'])->group(function(){
 
     //teams
     Route::resource('/admin-dashboard/teams', App\Http\Controllers\admin\TeamController::class);
+
+    //contact
+    Route::get('/admin-dashboard/contact', [App\Http\Controllers\admin\ContactController::class, 'index'])->name('contact.index');
+    Route::post('/contact/post', [App\Http\Controllers\admin\ContactController::class, 'storeOrUpdate'])->name('contact.storeOrUpdate');
 });
+
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('index');
+Route::get('/profile', [App\Http\Controllers\FrontendController::class, 'profile'])->name('profile');
+Route::get('/trainer', [App\Http\Controllers\FrontendController::class, 'trainer'])->name('trainer');
+Route::get('/schedule', [App\Http\Controllers\FrontendController::class, 'schedule'])->name('schedule');
+Route::get('/pendaftaran', [App\Http\Controllers\FrontendController::class, 'registrasi'])->name('registrasi');
+Route::get('/certificate', [App\Http\Controllers\FrontendController::class, 'certificate'])->name('certificate');
+Route::get('/consultant', [App\Http\Controllers\FrontendController::class, 'consultant'])->name('consultant');
+Route::get('/pendampingan', [App\Http\Controllers\FrontendController::class, 'pendampingan'])->name('pendampingan');
+Route::get('/penyusun', [App\Http\Controllers\FrontendController::class, 'penyusun'])->name('penyusun');
+Route::get('/galeri', [App\Http\Controllers\FrontendController::class, 'galeri'])->name('galeri');
+Route::get('/news', [App\Http\Controllers\FrontendController::class, 'news'])->name('news');

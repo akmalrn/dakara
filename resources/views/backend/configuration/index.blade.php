@@ -79,38 +79,6 @@
 
                             <div class="row">
                                 <div class="col-md mb-3">
-                                    <label for="phone_number" class="form-label">Phone Number</label>
-                                    <input type="text" name="phone_number"
-                                        class="form-control @error('phone_number') is-invalid @enderror"
-                                        value="{{ old('phone_number', $configuration->phone_number ?? '') }}"
-                                        pattern="\d*" inputmode="numeric">
-                                    @error('phone_number')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md mb-3">
-                                    <label for="email_address" class="form-label">Email Address</label>
-                                    <input type="email" name="email_address"
-                                        class="form-control @error('email_address') is-invalid @enderror"
-                                        value="{{ old('email_address', $configuration->email_address ?? '') }}">
-                                    @error('email_address')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-md mb-3">
-                                <label for="map" class="form-label">Map</label>
-                                <input type="text" name="map" class="form-control @error('map') is-invalid @enderror"
-                                    value="{{ old('map', $configuration->map ?? '') }}">
-                                @error('map')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md mb-3">
                                     <label for="meta_keywords" class="form-label">Meta Keywords</label>
                                     <textarea name="meta_keywords" class="form-control @error('meta_keywords') is-invalid @enderror">{{ old('meta_keywords', $configuration->meta_keywords ?? '') }}</textarea>
                                     @error('meta_keywords')
