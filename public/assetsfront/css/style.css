@@ -1566,7 +1566,6 @@ input:focus {
 }
 .srex-hero-one__right img {
   border-radius: 20px;
-  height: 718px;
   margin-bottom: -65px;
   object-fit: cover;
 }
@@ -1976,9 +1975,8 @@ input:focus {
   }
 }
 .srex-about-us-one__right__img {
-  height: 780px;
+    width: 1000px;
   object-fit: cover;
-  width: 100%;
 }
 @media (max-width: 767px) {
   .srex-about-us-one__right__img {
@@ -5273,12 +5271,12 @@ box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.05);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 300px; 
+  min-height: 300px;
   padding-bottom: 100px;
 }
 
 .company-title span,
-.breadcrumb-item a, 
+.breadcrumb-item a,
 .breadcrumb-item.active span {
   background: white;
   padding: 10px 20px;
@@ -5401,4 +5399,3 @@ a[href^="tel:"]:hover {
 }
 
 /* Styling button jika diperlukan */
-  

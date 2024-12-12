@@ -261,6 +261,13 @@
                                 <span class="badge badge-secondary"></span>
                             </a>
                         </li>
+                        <li class="nav-item {{ Request::is('admin-dashboard/nearest_schedule') ? 'active' : '' }}">
+                            <a href="{{ route('nearest_schedule.index') }}">
+                                <i class="fas fa-calendar"></i>
+                                <p>Nearest Schedule</p>
+                                <span class="badge badge-secondary"></span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

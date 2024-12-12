@@ -1,4 +1,4 @@
-<div class="page-header text-center bg-img-full" style="background-image: url('https://dakara-lcaindonesia.com/dev/front/pohoncut.png');">
+<div class="page-header text-center bg-img-full" style="background-image: url({{ asset('assetsfront/images/background/pohon.png') }});">
     <div class="container">
         <div class="row py-5">
             <div class="col-12">

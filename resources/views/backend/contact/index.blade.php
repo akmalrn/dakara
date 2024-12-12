@@ -47,7 +47,9 @@
                             <div class="row">
                                 <div class="col-md mb-3">
                                     <label for="email_address" class="form-label">Email Address</label>
-                                    <textarea name="email_address" class="form-control @error('email_address') is-invalid @enderror">{{ old('email_address', $contact->email_address ?? '') }}</textarea>
+                                    <input type="email" name="email_address"
+                                        class="form-control @error('email_address') is-invalid @enderror"
+                                        value="{{ old('email_address', $contact->email_address ?? '') }}">
                                     @error('email_address')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -55,22 +57,57 @@
 
                                 <div class="col-md mb-3">
                                     <label for="email_address_2" class="form-label">Email Address 2</label>
-                                    <textarea name="email_address_2" class="form-control @error('email_address_2') is-invalid @enderror">{{ old('email_address_2', $contact->email_address_2 ?? '') }}</textarea>
+                                    <input type="email" name="email_address_2"
+                                        class="form-control @error('email_address_2') is-invalid @enderror"
+                                        value="{{ old('email_address_2', $contact->email_address_2 ?? '') }}">
                                     @error('email_address_2')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
 
+                            <div class="row">
+                                <div class="col-md mb-3">
+                                    <label for="map" class="form-label">Map</label>
+                                    <input type="text" name="map"
+                                        class="form-control @error('map') is-invalid @enderror"
+                                        value="{{ old('map', $contact->map ?? '') }}">
+                                    @error('map')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
 
-                            <div class="col-md mb-3">
-                                <label for="map" class="form-label">Map</label>
-                                <input type="text" name="map"
-                                    class="form-control @error('map') is-invalid @enderror"
-                                    value="{{ old('map', $contact->map ?? '') }}">
-                                @error('map')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                            <div class="row">
+                                <div class="col-md mb-3">
+                                    <label for="youtube" class="form-label">Youtube</label>
+                                    <input type="text" name="youtube"
+                                        class="form-control @error('youtube') is-invalid @enderror"
+                                        value="{{ old('youtube', $contact->youtube ?? '') }}">
+                                    @error('youtube')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md mb-3">
+                                    <label for="facebook" class="form-label">Facebook</label>
+                                    <input type="text" name="facebook"
+                                        class="form-control @error('facebook') is-invalid @enderror"
+                                        value="{{ old('facebook', $contact->facebook ?? '') }}">
+                                    @error('facebook')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md mb-3">
+                                    <label for="instagram" class="form-label">Instagram</label>
+                                    <input type="text" name="instagram"
+                                        class="form-control @error('instagram') is-invalid @enderror"
+                                        value="{{ old('instagram', $contact->instagram ?? '') }}">
+                                    @error('instagram')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
 
                             <!-- Tambahkan input lainnya sesuai kebutuhan -->

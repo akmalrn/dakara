@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('about_us', function (Blueprint $table) {
+        Schema::create('nearest_schedule', function (Blueprint $table) {
             $table->id();
-            $table->string('path')->nullable();
-            $table->string('title')->nullable();
-            $table->string('overview')->nullable();
-            $table->text('description')->nullable();
+            $table->string('path');
+            $table->date('date');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('about_us');
+        Schema::dropIfExists('nearest_schedule');
     }
 };

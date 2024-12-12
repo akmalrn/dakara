@@ -4,7 +4,7 @@
             aria-label="Main Navigation" style="max-width: 1190px; width : 1190px;">
             <div class="ud-main-menu__logo">
                 <a href="{{ route('index') }}">
-                    <img src="{{ asset($configuration->path ?? '') }}" alt="{{ $configuration->title }}" width="100px">
+                    <img src="{{ asset($configuration->path ?? '') }}" alt="{{ $configuration->title ?? '' }}" width="100px">
                 </a>
             </div>
             <ul class="ud-main-menu__links d-none d-lg-flex">
@@ -51,16 +51,16 @@
                     <a href="{{route('index')}}" style="font-size: small">LCA Indonesia Publishing</a>
                 </li>
                 <li>
-                    <a href="contact.html" style="font-size: small">Gallery</a>
+                    <a href="{{ route('gallery') }}" style="font-size: small">Gallery</a>
                 </li>
                 <li>
-                    <a href="contact.html" style="font-size: small">Contact Us</a>
+                    <a href="{{ route('contact') }}" style="font-size: small">Contact Us</a>
                 </li>
                 <li>
-                    <a href="#" style="font-size: small">News</a>
+                    <a href="{{ route('blog') }}" style="font-size: small">Blog</a>
                 </li>
                 <li>
-                    <a href="#" style="font-size: small">Videos</a>
+                    <a href="{{ route('videos') }}" style="font-size: small">Videos</a>
                 </li>
             </ul>
         </nav>
@@ -70,7 +70,7 @@
     <div class="ud-side-popup ud-side-popup--home-one">
         <div class="ud-side-popup__header">
             <div class="ud-side-popup__header-logo">
-                <img src="./{{ asset($configuration->path ?? '') }}" alt="{{ $configuration->title }}">
+                <img src="./{{ asset($configuration->path ?? '') }}" alt="{{ $configuration->title ?? '' }}">
             </div>
             <button class="side-popup-close">
                 <i class="fa-solid fa-xmark"></i>

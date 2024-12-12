@@ -25,4 +25,9 @@ class Blog extends Model
     {
         return $this->belongsTo(CategoryBlog::class);
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(CategoryBlog::class);
+    }
 }

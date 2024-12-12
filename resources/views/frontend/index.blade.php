@@ -1,5 +1,62 @@
 @extends('frontend.layouts')
+@section('style')
+    <style>
+        .custom-alert {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .custom-alert-content {
+            position: relative;
+            background: #fff;
+            padding: 20px;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #000;
+        }
+    </style>
+@endsection
 @section('content')
+    <div id="custom-alert" class="custom-alert">
+        <div class="custom-alert-content">
+            <button class="close-btn">&times;</button>
+            <p>Ini adalah pesan alert di tengah!</p>
+        </div>
+        <script>
+            function showAlert() {
+                const alertBox = document.getElementById("custom-alert");
+                alertBox.style.display = "flex";
+            }
+
+            document.querySelector(".close-btn").addEventListener("click", function() {
+                const alertBox = document.getElementById("custom-alert");
+                alertBox.style.display = "none";
+            });
+
+            setTimeout(showAlert, 1000);
+        </script>
+    </div>
     <!-- Slider -->
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -37,37 +94,22 @@
                         <h1 class="srex-hero-one__box__text">
                             <span
                                 class="srex-hero-one__box__text__top d-flex align-items-center gap-3 justify-content-between">
-                                Power For
+                                PT. DAKARA CONSULTING LCA INDONESIA
                                 <span class="srex-hero-one__box__text__top__line"></span>
                             </span>
-                            A Sustainable Future <br>
-                            with <span>Solar Energy</span>
                         </h1>
                         <p class="srex-hero-one__box__desc">
-                            Nullam vel nibh facilisis lectus fermentum
-                            ultrices quis non risus. Lorem ipsum dolor sit
-                            amet, consectetur adipiscing elit. In hac
-                            habitasse platea dictumst.
+                            PT. DAKARA CONSULTING LCA INDONESIA is engaged in environmental services and consulting. In
+                            addition to carrying out various training, such as Life Cycle Assessment (LCA) PROPER, Renewable
+                            Energy, Training of Heat Exchanger and Radiator, Training of Life Cycle Assessment (TolLCA),
+                            Training of Energy Audit, Training of Agricultural Engineering, Training of Bio energy, Training
+                            of Jurnal Editor, and Palm Oil Mill.
                         </p>
-
-                        <a href="#" class="srex-btn srex-btn--outline">
-                            Discover More <i class="fa-solid fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="d-flex gap-2 align-items-center justify-content-between wow ud-fade-in-up"
-                        data-wow-delay="200ms">
-                        <div class="srex-hero-one__left__enery__efficient">
-                            <h2>70%</h2>
-                            <p>Energy Efficient</p>
-                        </div>
-                        <div class="srex-hero-one__left__img">
-                            <img src="./assetsfront/images/home-one/hero-img-1.png" alt="Solar Panel">
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-12">
                     <div class="srex-hero-one__right wow ud-fade-in-right" data-wow-delay="200ms">
-                        <img src="./assetsfront/images/home-one/hero-img-2.png" alt="Women with Solar Panel">
+                        <img src="{{ asset($configuration->path ?? '') }}" alt="Women with Solar Panel">
                     </div>
                 </div>
             </div>
@@ -88,16 +130,13 @@
                         <div class="srex-section__head">
                             <h5 class="srex-section__head__badge wow ud-fade-in-up" data-wow-delay="200ms">
                                 <img src="./assetsfront/images/badge-icon.svg" alt="Badge Icon">
-                                About US
+                                {{ $about->title ?? '' }}
                             </h5>
-                            <h2 class="srex-section__head__title wow ud-fade-in-up" data-wow-delay="200ms">
-                                Embrace the power the sun with solar energy!
-                            </h2>
+                            {{-- <h2 class="srex-section__head__title wow ud-fade-in-up" data-wow-delay="200ms">
+                                Apa itu Life Cycle Assessment (LCA) ?
+                            </h2> --}}
                             <p class="srex-section__head__desc wow ud-fade-in-up" data-wow-delay="200ms">
-                                Nullam vel nibh facilisis lectus fermentum
-                                ultrices quis non risus. Lore m ipsum dolor
-                                sit amet, consectetur adipiscing elit. In
-                                hac habi
+                                {{ $about->overview ?? '' }}
                             </p>
 
                             <div class="srex-icon-list wow ud-fade-in-up" data-wow-delay="200ms">
@@ -105,43 +144,36 @@
                                     <li>
                                         <i class="fa-solid fa-check"></i>
                                         <p>
-                                            Redefining Energy with Solar
-                                            Technology
+                                            Definition of objectives and scope
                                         </p>
                                     </li>
                                     <li>
                                         <i class="fa-solid fa-check"></i>
-                                        <p>Unleash the Power of the Sun</p>
+                                        <p>LCI (Life Cycle Inventory)</p>
                                     </li>
                                     <li>
                                         <i class="fa-solid fa-check"></i>
                                         <p>
-                                            Solar Solutions for a Brighter
-                                            Tomorrow
+                                            Life Cycle Impact Assessment
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        <p>
+                                            Interpretation
                                         </p>
                                     </li>
                                 </ul>
                             </div>
-
-                            <a href="./about-us.html" class="srex-btn srex-btn--outline wow ud-fade-in-up"
-                                data-wow-delay="200ms">
-                                Read More <i class="fa-solid fa-plus"></i>
-                            </a>
+                            {!! $about->description ?? '' !!}
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-12 px-0">
                     <div class="srex-about-us-one__right">
-                        <img src="./assetsfront/images/about-us/about-us.png" alt="About Us"
+                        <img src="{{ asset($about->path ?? '') }}" alt="{{ $about->title ?? '' }}"
                             class="srex-about-us-one__right__img wow ud-fade-in-up" data-wow-delay="200ms">
                         <div>
-                            <div class="srex-about-us-one__right__box d-flex gap-3 wow fadeInUp" data-wow-duration="1.3s">
-                                <img src="./assetsfront/images/about-us/medal.png" alt="Medal">
-                                <div class="srex-about-us-one__right__box__text">
-                                    <h2>15+</h2>
-                                    <p>Years of experience</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -152,82 +184,80 @@
 
 
     <!-- About US Bottom Start-->
-    <section class="srex-section-bottom srex-section">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-6 col-12">
-                    <div class="srex-section-bottom__left wow ud-fade-in-up" data-wow-delay="200ms">
-                        <img src="assetsfront/images/about-us/Shape.png" alt="Shape">
-                        <img class="srex-section-bottom__left__img" src="assetsfront/images/about-us/about-us-bottom.png"
-                            alt="about-us-bottom-img">
-                    </div>
+    <div class=" pad-top-md pad-bottom-md border-top">
+        <div class="containe    r">
+            <!-- start of main-heading -->
+            <header class="main-heading text-center row">
+                <div class="col-xs-12">
+                    <h2 class="heading"><span style="background: white; padding:10px; border-radius:5px;">Jadwal
+                            Terdekat</span></h2>
                 </div>
-                <div class="col-lg-6 col-12">
-                    <div class="srex-section-bottom__right">
-                        <div class="mb-5">
-                            <h3 class="srex-section-bottom__right__title wow ud-fade-in-up" data-wow-delay="200ms">
-                                Sun-Powered Solutions for a Sustainable
-                                Future
-                            </h3>
-                            <p class="srex-section-bottom__right__desc wow ud-fade-in-up" data-wow-delay="300ms">
-                                Nullam vel nibh facilisis lectus fermentum
-                                ultrices quis non risus. Lorem ipsum dolor
-                                sit amet, consectetur adipiscing elit. In
-                                hac habita
-                            </p>
+            </header><!-- end of main-heading -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- start of line-box -->
+                    <div class="line-box">
+                        <!-- start of line -->
+                        <div class="owl-carouself">
+                            @if ($schedules->isEmpty())
+                            <p class="text-center">Jadwal Kosong</p>
+                        @else
+                            @foreach ($schedules as $schedule)
+                                <div>
+                                    <a href="{{ $schedule->path }}" target="_blank">
+                                        <img src="{{ asset($schedule->path) }}" alt="" width="150px" height="150px">
+                                    </a>
+                                </div>
+                            @endforeach
+                        @endif
                         </div>
-                        <div class="srex-icon-list srex-icon-list--multi-text">
-                            <ul>
-                                <li class="wow ud-fade-in-up" data-wow-delay="350ms">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                    <div>
-                                        <h3>Sunshine Energy</h3>
-                                        <p>
-                                            Lorem ipsum dolor consectetur
-                                            notte massa sapien samet.
-                                            Aucibus sed sem non, mattis
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="wow ud-fade-in-up" data-wow-delay="400ms">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                    <div>
-                                        <h3>Sunshine Energy</h3>
-                                        <p>
-                                            Lorem ipsum dolor consectetur
-                                            notte massa sapien samet.
-                                            Aucibus sed sem non, mattis
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    </div><!-- end of line-box -->
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <!-- About US Bottom End-->
 
     <!-- Blog Section Start-->
     <section class="srex-blog-one srex-section">
         <div class="container">
             <div class="row">
+                <div class="col-12">
+                    <div class="srex-blog-one__title">
+                        <div class="srex-section__head wow ud-fade-in-left" data-wow-delay="200ms">
+                            <h5 class="srex-section__head__badge">
+                                <img src="./assetsfront/images/badge-icon.svg" alt="Badge Icon">
+                                Blog
+                            </h5>
+                            <h2 class="srex-section__head__title">
+                                Blog Terbaru
+                            </h2>
+                        </div>
+                        <a href="{{ route('blog') }}" class="srex-btn srex-btn--primary wow ud-fade-in-right"
+                            data-wow-delay="200ms">
+                            Blog Lainnya <i class="fa-solid fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
                 @foreach ($blogs as $blog)
-                    <div class="col-12">
-                        <div class="srex-blog-one__title">
-                            <div class="srex-section__head wow ud-fade-in-left" data-wow-delay="200ms">
-                                <h5 class="srex-section__head__badge">
-                                    <img src="{{ asset($blog->path) }}" alt="{{ $blog->title }}">
-                                    Blog & News
-                                </h5>
-                                <h2 class="srex-section__head__title">
-                                    Shine Brighter with Solar
-                                </h2>
+                    <div class="col-12 col-lg-4 col-md-6">
+                        <div class="srex-blog-one__post wow ud-fade-in-up" data-wow-delay="250ms">
+                            <a href="blog-details.html" class="srex-blog-one__post__img">
+                                <img src="{{ asset($blog->path) }}" alt="{{ $blog->title }}">
+                            </a>
+                            <div class="d-flex gap-5 mt-2">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-calendar-alt"></i>
+                                    <h6>{{ $blog->created_at }}</h6>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-user-alt"></i>
+                                    <h6>Admin</h6>
+                                </div>
                             </div>
-                            <a href="./blog.html" class="srex-btn srex-btn--primary wow ud-fade-in-right"
-                                data-wow-delay="200ms">
-                                More Blogs <i class="fa-solid fa-plus"></i>
+                            <h3><a href="blog-details.html">{{ $blog->title }}</a></h3>
+                            <a href="./blog-details.html" class="srex-btn srex-btn--outline">
+                                Baca Selengkapnya<i class="fa-solid fa-plus"></i>
                             </a>
                         </div>
                     </div>
@@ -241,24 +271,11 @@
     <div class="srex-sponsor srex-section">
         <div class="container">
             <div class="srex-sponsor__items wow fadeInUp" data-wow-duration="1.5s">
-                <a href="#" class="zirox-brand__items-item">
-                    <img src="assetsfront/images/sponsor/sponsor-2.png" alt="Envato">
-                </a>
-                <a href="#" class="zirox-brand__items-item">
-                    <img src="assetsfront/images/sponsor/sponsor-3.png" alt="Envato">
-                </a>
-                <a href="#" class="zirox-brand__items-item">
-                    <img src="assetsfront/images/sponsor/sponsor-4.png" alt="Envato">
-                </a>
-                <a href="#" class="zirox-brand__items-item">
-                    <img src="assetsfront/images/sponsor/sponsor-2.png" alt="Envato">
-                </a>
-                <a href="#" class="zirox-brand__items-item">
-                    <img src="assetsfront/images/sponsor/sponsor-3.png" alt="Envato">
-                </a>
-                <a href="#" class="zirox-brand__items-item">
-                    <img src="assetsfront/images/sponsor/sponsor-4.png" alt="Envato">
-                </a>
+                @foreach ($mitras as $mitra)
+                    <a href="{{ $mitra->link }}" target="blank" class="zirox-brand__items-item">
+                        <img src="{{ asset($mitra->path) }}" alt="{{ $mitra->title }}">
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>
