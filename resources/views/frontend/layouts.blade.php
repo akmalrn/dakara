@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Page Title -->
     <title>@yield('title', $configuration->title ?? '')</title>
-    <meta name="keywords" content="@yield('keywords', $configuration->keywords ?? 'default, keywords, here')">
-    <meta name="description" content="@yield('description', $configuration->description ?? 'Default description for the page')">
+    <meta name="keywords" content="{{ $blog->keywords ?? $configuration->meta_keywords ?? '' }}">
+    <meta name="description" content="{{ $blog->descriptions ?? $configuration->meta_descriptions ?? '' }}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset($configuration->path_logo ?? '') }}" type="image/x-icon">
@@ -31,72 +31,8 @@
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-
-    <style>
-        /* Styling overlay */
-        .custom-alert {
-            display: none;
-            /* Tersembunyi secara default */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        /* Styling alert box */
-        .custom-alert-content {
-            position: relative;
-            background: #fff;
-            padding: 20px;
-            width: 300px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-
-        /* Close button */
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            color: #000;
-        }
-    </style>
+        @yield('style')
 </head>
-
-<div id="custom-alert" class="custom-alert">
-    <div class="custom-alert-content">
-        <button class="close-btn">&times;</button>
-        <p>Ini adalah pesan alert di tengah!</p>
-    </div>
-    <script>
-        // Menampilkan alert
-        function showAlert() {
-            const alertBox = document.getElementById("custom-alert");
-            alertBox.style.display = "flex"; // Menampilkan alert
-        }
-
-        // Menyembunyikan alert
-        document.querySelector(".close-btn").addEventListener("click", function() {
-            const alertBox = document.getElementById("custom-alert");
-            alertBox.style.display = "none"; // Menyembunyikan alert
-        });
-
-        // Tes fungsi
-        setTimeout(showAlert, 1000); // Alert muncul 1 detik setelah halaman dimuat
-    </script>
-</div>
-
 
 <body class="body-wrapper home-one" data-scroll-animation="true">
     <div class="overlay"></div>

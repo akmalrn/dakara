@@ -1,5 +1,5 @@
 <footer class="srex-footer-one"
-    style="background:  url({{ asset('assetsfront/images/background/pohon.png') }});overflow-x: hidden;">
+    style="background:  url({{ asset('assetsfront/images/background/pohon.png') }});overflow-x: hidden;background-size: 100% 600px; ">
     <div class="container">
 
         <hr>
@@ -15,24 +15,25 @@
                             <div class="srex-footer__newsletter">
                                 <ul class="list-unstyled d-flex justify-content-center gap-3">
                                     <li>
-                                        <a href="#" class="text-dark fs-4">
-                                            <i class="fa-brands fa-facebook"></i>
-                                        </a>
+                                        @if (!empty($contact->youtube))
+                                            <a href="{{ $contact->youtube }}" class="text-dark fs-4">
+                                                <i class="fa-brands fa-youtube"></i>
+                                            </a>
+                                        @endif
                                     </li>
                                     <li>
-                                        <a href="#" class="text-dark fs-4">
-                                            <i class="fa-brands fa-x"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-dark fs-4">
+                                        @if (!empty($contact->instagram))
+                                        <a href="{{ $contact->instagram }}" class="text-dark fs-4">
                                             <i class="fa-brands fa-instagram"></i>
                                         </a>
+                                        @endif
                                     </li>
                                     <li>
-                                        <a href="#" class="text-dark fs-4">
-                                            <i class="fa-brands fa-pinterest"></i>
+                                        @if (!empty($contact->facebook))
+                                        <a href="{{ $contact->facebook }}" class="text-dark fs-4">
+                                            <i class="fa-brands fa-facebook"></i>
                                         </a>
+                                        @endif
                                     </li>
                                 </ul>
                             </div>
@@ -84,11 +85,21 @@
                                     </div>
                                     <div class="srex-footer__contact__text">
                                         <p>
-                                            <a href="tel:+11234567890">+(1) 123 456 7890</a>
+                                            <a href="https://wa.me/{{ $contact->phone_number_2 ?? '' }}">+{{ $contact->phone_number_2 ?? '' }}</a>
                                         </p>
                                         <p>
-                                            <a href="tel:+10987654321">+(1) 098 765 4321</a>
+                                            <a href="https://wa.me/{{ $contact->phone_number_3 ?? '' }}">+{{ $contact->phone_number_3 ?? '' }}</a>
                                         </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="srex-footer__contact__icon">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </div>
+                                    <div class="srex-footer__contact__text">
+                                    <p>
+                                        <a href="https://wa.me/{{ $contact->phone_number ?? '' }}">+{{ $contact->phone_number }}</a>
+                                    </p>
                                     </div>
                                 </li>
                                 <li>
@@ -97,9 +108,7 @@
                                     </div>
                                     <div class="srex-footer__contact__text">
                                         <p>
-                                            Burmsille Street, MN 55337,
-                                            <br>
-                                            United States
+                                            {{ $contact->address ?? '' }}
                                         </p>
                                     </div>
                                 </li>
@@ -109,10 +118,10 @@
                                     </div>
                                     <div class="srex-footer__contact__text">
                                         <p>
-                                            <a href="mailto:info@driller.com">info@driller.com</a>
+                                            <a href="mailto:{{ $contact->email_address ?? '' }}">{{ $contact->email_address ?? '' }}</a>
                                         </p>
                                         <p>
-                                            <a href="mailto:info.example@driller.com">info.example@driller.com</a>
+                                            <a href="mailto:{{ $contact->email_address_2 ?? '' }}">{{ $contact->email_address_2 ?? '' }}</a>
                                         </p>
                                     </div>
                                 </li>
@@ -129,7 +138,7 @@
             <div class="row">
                 <div class="text-center">
                     <p>
-                        &copy; 2024 Solarex | All Rights Reserved
+                       {{ $configuration->footer ?? '' }}
                     </p>
                 </div>
             </div>

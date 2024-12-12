@@ -10,7 +10,8 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return view('backend.contact.index');
+        $contact = Contact::first();
+        return view('backend.contact.index', compact('contact'));
     }
 
     public function storeOrUpdate(Request $request)
@@ -23,6 +24,9 @@ class ContactController extends Controller
             'email_address_2' => 'nullable|email|max:255',
             'address' => 'nullable|string',
             'map' => 'nullable|string',
+            'youtube' => 'nullable|string',
+            'facebook' => 'nullable|string',
+            'instagram' => 'nullable|string',
         ]);
 
         $data = [
@@ -33,6 +37,9 @@ class ContactController extends Controller
             'email_address_2' => $request->input('email_address_2'),
             'address' => $request->input('address'),
             'map' => $request->input('map'),
+            'youtube' => $request->input('youtube'),
+            'facebook' => $request->input('facebook'),
+            'instagram' => $request->input('instagram'),
         ];
 
         Contact::updateOrCreate(
@@ -40,6 +47,6 @@ class ContactController extends Controller
             $data
         );
 
-        return redirect()->back()->with('success', 'Configuration has been successfully saved or updated.');
+        return redirect()->back()->with('success', 'Contact has been successfully saved or updated.');
     }
 }

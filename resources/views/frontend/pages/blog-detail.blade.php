@@ -1,35 +1,23 @@
 @extends('frontend.layouts')
-@section('title', 'Blog')
+@section('title', $blog->title)
 @section('content')
 @section('title-page', 'Blog')
 @include('frontend.components.page-header')
-
-    <!-- START BLOG -->
+<!-- START BLOG -->
     <section class="blog-page section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-sm-12 col-xs-12">
-                    @foreach ($blogs as $blog)
-                    <div class="post-slide-blog">
+                    <div class="post-slide-blog post-single">
                         <div class="blog-img">
                             <img src="{{ asset($blog->path) }}" class="img-fluid" alt="{{ $blog->title }}" />
-                            <a href="{{ route('detail.blog', $blog->id) }}">{{ $blog->created_at->format('d-m-Y') }}
-                            </a>
                         </div>
                         <span><i class="fa-regular fa-user"></i> By admin</span>
-                        <h2><a href="{{ route('detail.blog', $blog->id) }}">     {{ $blog->title }}</a></h2>
-                        <p>{{ $blog->overview }}</p>
-                        <a href="{{ route('detail.blog', $blog->id) }}" class="srex-btn srex-btn--outline">
-                            Baca Selengkapnya<i class="fa-solid fa-plus"></i>
-                        </a>
+                        <span><i class="fa-regular fa-calendar-days"></i> {{ $blog->created_at->format('d-m-Y') }}</span>
+                        <h2><a href="blog-details.html">{{ $blog->title }}</a></h2>
+                  {!! $blog->description !!}
+
                     </div>
-                    @endforeach
-                    <!--- START PAGINATION -->
-                    <div id="pagination">
-                        <nav>
-                            {{ $blogs->links('pagination::bootstrap-4') }} <!-- Tampilkan navigasi pagination -->
-                        </nav>
-                    </div><!--- END PAGINATION -->
                 </div><!-- END COL-->
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <div class="blog_search">

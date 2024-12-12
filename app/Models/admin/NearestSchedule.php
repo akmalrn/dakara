@@ -5,15 +5,14 @@ namespace App\Models\admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoryBlog extends Model
+class NearestSchedule extends Model
 {
     use HasFactory;
 
-    protected $table = 'category_blogs';
+    protected $table = 'nearest_schedule';
 
     protected $fillable = [
-        'category',
+        'path',
+        'date',
     ];
-
-    
 }

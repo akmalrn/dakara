@@ -151,37 +151,22 @@
                         <h1 class="srex-hero-one__box__text">
                             <span
                                 class="srex-hero-one__box__text__top d-flex align-items-center gap-3 justify-content-between">
-                                Power For
+                                PT. DAKARA CONSULTING LCA INDONESIA
                                 <span class="srex-hero-one__box__text__top__line"></span>
                             </span>
-                            A Sustainable Future <br>
-                            with <span>Solar Energy</span>
                         </h1>
                         <p class="srex-hero-one__box__desc">
-                            Nullam vel nibh facilisis lectus fermentum
-                            ultrices quis non risus. Lorem ipsum dolor sit
-                            amet, consectetur adipiscing elit. In hac
-                            habitasse platea dictumst.
+                            PT. DAKARA CONSULTING LCA INDONESIA is engaged in environmental services and consulting. In
+                            addition to carrying out various training, such as Life Cycle Assessment (LCA) PROPER, Renewable
+                            Energy, Training of Heat Exchanger and Radiator, Training of Life Cycle Assessment (TolLCA),
+                            Training of Energy Audit, Training of Agricultural Engineering, Training of Bio energy, Training
+                            of Jurnal Editor, and Palm Oil Mill.
                         </p>
-
-                        <a href="#" class="srex-btn srex-btn--outline">
-                            Discover More <i class="fa-solid fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="d-flex gap-2 align-items-center justify-content-between wow ud-fade-in-up"
-                        data-wow-delay="200ms">
-                        <div class="srex-hero-one__left__enery__efficient">
-                            <h2>70%</h2>
-                            <p>Energy Efficient</p>
-                        </div>
-                        <div class="srex-hero-one__left__img">
-                            <img src="./assetsfront/images/home-one/hero-img-1.png" alt="Solar Panel">
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-12">
                     <div class="srex-hero-one__right wow ud-fade-in-right" data-wow-delay="200ms">
-                        <img src="./assetsfront/images/home-one/hero-img-2.png" alt="Women with Solar Panel">
+                        <img src="{{ asset($configuration->path ?? '') }}" alt="Women with Solar Panel">
                     </div>
                 </div>
             </div>

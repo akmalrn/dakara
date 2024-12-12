@@ -14,10 +14,13 @@ class contact extends Model
     protected $fillable = [
         'phone_number',
         'phone_number_2',
+        'phone_number_3',
         'email_address',
         'email_address_2',
-        'email_address_3',
         'address',
         'map',
+        'youtube',
+        'facebook',
+        'instagram',
     ];
 }

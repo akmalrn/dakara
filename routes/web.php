@@ -68,16 +68,30 @@ Route::middleware(['auth'])->group(function () {
     //contact
     Route::get('/admin-dashboard/contact', [App\Http\Controllers\admin\ContactController::class, 'index'])->name('contact.index');
     Route::post('/contact/post', [App\Http\Controllers\admin\ContactController::class, 'storeOrUpdate'])->name('contact.storeOrUpdate');
+
+    //shedule
+    Route::resource('/admin-dashboard/nearest_schedule', \App\Http\Controllers\admin\NearestScheduleController::class);
 });
 
-Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('index');
-Route::get('/profile', [App\Http\Controllers\FrontendController::class, 'profile'])->name('profile');
-Route::get('/trainer', [App\Http\Controllers\FrontendController::class, 'trainer'])->name('trainer');
-Route::get('/schedule', [App\Http\Controllers\FrontendController::class, 'schedule'])->name('schedule');
-Route::get('/pendaftaran', [App\Http\Controllers\FrontendController::class, 'registrasi'])->name('registrasi');
-Route::get('/certificate', [App\Http\Controllers\FrontendController::class, 'certificate'])->name('certificate');
-Route::get('/consultant', [App\Http\Controllers\FrontendController::class, 'consultant'])->name('consultant');
-Route::get('/pendampingan', [App\Http\Controllers\FrontendController::class, 'pendampingan'])->name('pendampingan');
-Route::get('/penyusun', [App\Http\Controllers\FrontendController::class, 'penyusun'])->name('penyusun');
-Route::get('/galeri', [App\Http\Controllers\FrontendController::class, 'galeri'])->name('galeri');
-Route::get('/news', [App\Http\Controllers\FrontendController::class, 'news'])->name('news');
+Route::controller(App\Http\Controllers\FrontendController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/profile', 'profile')->name('profile');
+    Route::get('/trainer', 'trainer')->name('trainer');
+    Route::get('/schedule', 'schedule')->name('schedule');
+    Route::get('/pendaftaran', 'registrasi')->name('registrasi');
+    Route::get('/certificate', 'certificate')->name('certificate');
+    Route::get('/consultant', 'consultant')->name('consultant');
+    Route::get('/pendampingan', 'pendampingan')->name('pendampingan');
+    Route::get('/penyusun', 'penyusun')->name('penyusun');
+    Route::get('/galeri', 'galeri')->name('galeri');
+    Route::get('/news', 'news')->name('news');
+    Route::get('/gallery', 'gallery')->name('gallery');
+    Route::get('/contact-us', 'contact')->name('contact');
+    Route::get('/blog', 'blog')->name('blog');
+    Route::get('/detail-blog/{id}', 'detail_blog')->name('detail.blog');
+    Route::get('/blog/{category_id}', 'blog_category')->name('blog.category');
+    Route::get('/search', 'search')->name('blog.search');
+    Route::get('/videos', 'videos')->name('videos');
+});
+
+
