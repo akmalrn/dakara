@@ -7,7 +7,10 @@
 
 @include('frontend.components.page-header')
 
-<div class="container pad-top-xs full-width">
+
+<section class="wedo-section"
+style="background: url({{ asset('assetsfront/images/background/tukang-struktur.jpg') }}); overflow-x: hidden; background-size: 150px; border-top: 1px solid #dbdbdb;">
+<div class="container pad-top-xs full-width" style="padding-bottom:50px ">
     <div class="row pad-top-xs">
         <div class="">
             <div class="blog-detail">
@@ -36,5 +39,10 @@
         </div>
     </div>
 </div>
+<!-- Menambahkan Google Maps -->
+
+</section>
+
+<!-- Tambahkan CSS -->
 
 @endsection
