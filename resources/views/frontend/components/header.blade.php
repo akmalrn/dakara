@@ -51,7 +51,7 @@
                     <a href="{{route('index')}}" style="font-size: small">LCA Indonesia Publishing</a>
                 </li>
                 <li>
-                    <a href="{{ route('galeri') }}" style="font-size: small">Gallery</a>
+                    <a href="{{ route('gallery') }}" style="font-size: small">Gallery</a>
                 </li>
                 <li>
                     <a href="{{ route('contact') }}" style="font-size: small">Contact Us</a>
