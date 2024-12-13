@@ -88,6 +88,12 @@ class FrontendController extends Controller
         return view('frontend.pages.galeri', $commonData);
     }
 
+    public function contact()
+    {
+        $commonData = $this->getCommonData();
+        return view('frontend.pages.contact', $commonData);
+    }
+
     public function news()
     {
         $commonData = $this->getCommonData();
