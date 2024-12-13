@@ -15,14 +15,20 @@ class DatabaseGallerySeeder extends Seeder
     {
         Gallery::Create([
             'path' => 'uploads/gallerys/gambar-1.png',
+            'title' => 'galeri 1',
+            'description' => 'Galeri 1 adalah galeri 1',
         ]);
 
         Gallery::Create([
             'path' => 'uploads/gallerys/gambar-2.png',
+            'title' => 'galeri 2',
+            'description' => 'Galeri 2 adalah galeri 2',
         ]);
 
         Gallery::Create([
             'path' => 'uploads/gallerys/gambar-3.png',
+            'title' => 'galeri 3',
+            'description' => 'Galeri 3 adalah galeri 3',
         ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\admin\Configuration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class ConfigurationController extends Controller
 {
@@ -25,6 +26,8 @@ class ConfigurationController extends Controller
             'meta_keywords' => 'nullable|string',
             'meta_descriptions' => 'nullable|string',
             'footer' => 'nullable|string',
+            'path_alert' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp',
+            'pdf' => 'required|mimetypes:application/pdf',
         ]);
 
         $data = [
@@ -62,6 +65,30 @@ class ConfigurationController extends Controller
 
             $data['path_logo'] = 'uploads/configuration/' . $logoName;
         }
+
+        if ($request->hasFile('path_alert')) {
+            $oldPathLogo = Configuration::find(1)->path_alert ?? null;
+            if ($oldPathLogo && File::exists(($oldPathLogo))) {
+                File::delete(($oldPathLogo));
+            }
+
+            $logo = $request->file('path_alert');
+            $logoName = time() . '_' . $logo->getClientOriginalName();
+            $destinationPath = ('uploads/configuration');
+            $logo->move($destinationPath, $logoName);
+
+            $data['path_alert'] = 'uploads/configuration/' . $logoName;
+        }
+
+        $pdfName = null;
+        if ($request->hasFile('pdf')) {
+            $pdfFile = $request->file('pdf');
+            $pdfName = time() . '_' . Str::slug(pathinfo($pdfFile->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $pdfFile->getClientOriginalExtension();
+            $pdfFile->move(('uploads/configuration/pdf'), $pdfName);
+
+            $data['pdf'] = 'uploads/configuration/pdf/' . $pdfName;
+        }
+
 
         Configuration::updateOrCreate(
             ['id' => 1],

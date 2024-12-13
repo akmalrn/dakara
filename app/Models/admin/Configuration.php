@@ -19,5 +19,7 @@ class Configuration extends Model
         'meta_keywords',
         'meta_descriptions',
         'footer',
+        'path_alert',
+        'pdf',
     ];
 }

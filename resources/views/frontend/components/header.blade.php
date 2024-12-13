@@ -4,7 +4,8 @@
             aria-label="Main Navigation" style="max-width: 1190px; width : 1190px;">
             <div class="ud-main-menu__logo">
                 <a href="{{ route('index') }}">
-                    <img src="{{ asset($configuration->path ?? '') }}" alt="{{ $configuration->title ?? '' }}" width="100px">
+                    <img src="{{ asset($configuration->path ?? '') }}" alt="{{ $configuration->title ?? '' }}"
+                        width="100px">
                 </a>
             </div>
             <ul class="ud-main-menu__links d-none d-lg-flex">
@@ -16,7 +17,15 @@
                     <ul class="ud-main-menu__sub-menu">
                         <li><a href="{{ route('profile') }}">Profile</a></li>
                         <li><a href="{{ route('trainer') }}">Trainer</a></li>
-                        <li><a href="index-3.html">Download Company Profile/Brochure</a></li>
+                        <li>
+                            @if ($configuration->pdf)
+                                <a href="{{ asset($configuration->pdf) }}" target="_blank">Download Company
+                                    Profile/Brochure</a>
+                            @else
+                                <span>No PDF uploaded yet.</span>
+                            @endif
+                        </li>
+
                     </ul>
                 </li>
                 <li>
@@ -40,15 +49,15 @@
                             <a href="{{ route('penyusun') }}">Preparation Of Proper LCA Documents</a>
                         </li>
                         <li>
-                            <a href="{{route('galeri')}}">LCA Companion Gallery</a>
+                            <a href="{{ route('galeri') }}">LCA Companion Gallery</a>
                         </li>
                         <li>
-                            <a href="{{route('news')}}">LCA Assistance News</a>
+                            <a href="{{ route('news') }}">LCA Assistance News</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="{{route('index')}}" style="font-size: small">LCA Indonesia Publishing</a>
+                    <a href="{{ route('index') }}" style="font-size: small">LCA Indonesia Publishing</a>
                 </li>
                 <li>
                     <a href="{{ route('galeri') }}" style="font-size: small">Gallery</a>

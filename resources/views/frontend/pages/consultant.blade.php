@@ -17,24 +17,23 @@
                 </div>
             </div>
         </div>
-        <div class="">
+        <div class="container">
             <div class="row bg-white" style="padding-top:40px;">
-                <div class="col-md-12">
-                    <div class="col-xs-12 col-sm-3 mar-bottom-md">
-                        <!-- start of team-box -->
+                @foreach ($teams as $team)
+                    <div class="col-md-4 col-sm-6 mb-4">
                         <div class="team-box text-center">
-                            <a href="https://dakara-lcaindonesia.com/dev/file/trainer/NEW_CV_Dr_Kiman_Siregar,S_TP,M_Si_Expert_LCA_dari_ILCAN__Okt_2020_ok.pdf"
-                                style="color:#999;" target="_blank"><span class="text">
-                                    <div class="img-box" style="height: 250px; overflow: hidden;"><img
-                                            src="https://dakara-lcaindonesia.com/dev/img/trainer/669000a9c6dff50edda58b6c581be334.jpg"
-                                            alt="" class="img-responsive"></div>
-                                    <h3 class="heading">Dr. Kiman Siregar</h3>
-                                    <i class="fa fa-eye"></i> View
-                                </span></a>
-                        </div><!-- end of team-box -->
+                            <a href="{{ $team->pdf }}" style="color:#999;" target="_blank">
+                                <div class="img-box" style="height: 250px; overflow: hidden;">
+                                    <img src="{{ asset($team->path) }}" alt="{{ $team->name }}" class="img-responsive w-100">
+                                </div>
+                                <h3 class="heading mt-2">{{ $team->name }}</h3>
+                                <i class="fa fa-eye"></i> View
+                            </a>
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
+
     </div>
 @endsection

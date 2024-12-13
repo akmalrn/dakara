@@ -20,6 +20,8 @@ return new class extends Migration
             $table->text('meta_keywords')->nullable();
             $table->text('meta_descriptions')->nullable();
             $table->string('footer')->nullable();
+            $table->string('path_alert')->nullable();
+            $table->string('pdf')->nullable();
             $table->timestamps();
         });
     }

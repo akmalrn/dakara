@@ -37,7 +37,6 @@
                             </div>
                         </div>
                         <div class="card-body">
-
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
@@ -46,6 +45,7 @@
                                             <th>Name</th>
                                             <th>Position</th>
                                             <th>Description</th>
+                                            <th>PDF</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
@@ -55,7 +55,9 @@
                                             <th>Nama</th>
                                             <th>Jabatan</th>
                                             <th>Deskripsi</th>
+                                            <th>PDF</th>
                                             <th>Aksi</th>
+                                        </tr>
                                     </tfoot>
                                     <tbody>
                                         @foreach ($teams as $team)
@@ -65,6 +67,15 @@
                                                 <td>{{ $team->name }}</td>
                                                 <td>{{ Str::limit($team->position, 50) }}</td>
                                                 <td>{!! Str::limit($team->description, 100) !!}</td>
+                                                <td>
+                                                    @if ($team->pdf)
+                                                        <a href="{{ asset($team->pdf) }}" target="_blank" class="btn btn-link btn-sm">
+                                                            <i class="fa fa-file-pdf"></i> View PDF
+                                                        </a>
+                                                    @else
+                                                        <span class="text-muted">No PDF</span>
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <div class="form-button-action">
                                                         <form action="{{ route('teams.edit', $team->id) }}"

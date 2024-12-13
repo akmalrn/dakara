@@ -41,7 +41,7 @@
     <div id="custom-alert" class="custom-alert">
         <div class="custom-alert-content">
             <button class="close-btn">&times;</button>
-            <p>Ini adalah pesan alert di tengah!</p>
+           <img src="{{ asset($configuration->path_alert ?? '') }}" alt="{{ $path->website_name ?? '' }}" width="260px" height="260px">
         </div>
         <script>
             function showAlert() {

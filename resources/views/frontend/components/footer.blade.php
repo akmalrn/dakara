@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="srex-footer__contact__text">
                                     <p>
-                                        <a href="https://wa.me/{{ $contact->phone_number ?? '' }}">+{{ $contact->phone_number }}</a>
+                                        <a href="https://wa.me/{{ $contact->phone_number ?? '' }}">+{{ $contact->phone_number ?? '' }}</a>
                                     </p>
                                     </div>
                                 </li>

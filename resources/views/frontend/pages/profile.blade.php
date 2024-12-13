@@ -10,13 +10,13 @@
             <div class="srex-section__head text-center">
                 <h5 class="srex-section__head__badge wow ud-fade-in-up" data-wow-delay="200ms">
                     <img src="./assetsfront/images/badge-icon.svg" alt="Badge Icon">
-                    PT. DAKARA CONSULTING LCA INDONESIA NO 1
+                    {{ $configuration->website_name ?? '' }}
                 </h5>
 
             </div>
             <div class="srex-info-box">
                 <div class="row">
-                    <div class="col-md-6 col-lg-4 col-12">
+                    <div class="col-md-3 col-lg-3 col-12"> <!-- Change col-md-2 to col-md-3 for 4 items per row -->
                         <div class="srex-info-box__item wow ud-fade-in-up" data-wow-delay="200ms">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="srex-info-box__item__img">
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 col-12">
+                    <div class="col-md-3 col-lg-3 col-12">
                         <div class="srex-info-box__item wow ud-fade-in-up" data-wow-delay="400ms">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="srex-info-box__item__img">
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 col-12">
+                    <div class="col-md-3 col-lg-3 col-12">
                         <div class="srex-info-box__item wow ud-fade-in-up" data-wow-delay="600ms">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="srex-info-box__item__img">
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 col-12">
+                    <div class="col-md-3 col-lg-3 col-12"> <!-- Change col-md-6 to col-md-3 for 4 items per row -->
                         <div class="srex-info-box__item wow ud-fade-in-up" data-wow-delay="800ms">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="srex-info-box__item__img">
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 col-12">
+                    <div class="col-md-3 col-lg-3 col-12">
                         <div class="srex-info-box__item wow ud-fade-in-up" data-wow-delay="1s">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="srex-info-box__item__img">
@@ -116,7 +116,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 col-12">
+                    <div class="col-md-3 col-lg-3 col-12">
                         <div class="srex-info-box__item wow ud-fade-in-up" data-wow-delay="1.2s">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="srex-info-box__item__img">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TeamController extends Controller
 {
@@ -22,18 +23,25 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'path' => 'required|image|mimes:jpg,jpeg,png,webp,svg',
+            'path' => 'required|image|mimes:jpg,jpeg,png,webp,svg|max:2048',
             'name' => 'required|string|max:255',
             'position' => 'required|string|max:255',
             'description' => 'required|string',
+            'pdf' => 'required|mimetypes:application/pdf',
         ]);
 
         $imageName = null;
-
         if ($request->hasFile('path')) {
             $file = $request->file('path');
-            $imageName = time() . '_' . $file->getClientOriginalName();
+            $imageName = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
             $file->move(('uploads/teams'), $imageName);
+        }
+
+        $pdfName = null;
+        if ($request->hasFile('pdf')) {
+            $pdfFile = $request->file('pdf');
+            $pdfName = time() . '_' . Str::slug(pathinfo($pdfFile->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $pdfFile->getClientOriginalExtension();
+            $pdfFile->move(('uploads/teams/pdf'), $pdfName);
         }
 
         Team::create([
@@ -41,10 +49,12 @@ class TeamController extends Controller
             'name' => $request->name,
             'position' => $request->position,
             'description' => $request->description,
+            'pdf' => 'uploads/teams/pdf/' . $pdfName,
         ]);
 
         return redirect()->route('teams.index')->with('success', 'Team member added successfully.');
     }
+
 
     public function edit($id)
     {
@@ -55,10 +65,11 @@ class TeamController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'path' => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:8192',
+            'path' => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:2048',
             'name' => 'required|string|max:255',
             'position' => 'required|string|max:255',
             'description' => 'required|string',
+            'pdf' => 'nullable|mimetypes:application/pdf',
         ]);
 
         $team = Team::findOrFail($id);
@@ -69,9 +80,22 @@ class TeamController extends Controller
             }
 
             $file = $request->file('path');
-            $imageName = time() . '_' . $file->getClientOriginalName();
+            $imageName = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
             $file->move(('uploads/teams'), $imageName);
             $team->path = 'uploads/teams/' . $imageName;
+        }
+
+        // Handle PDF update
+        if ($request->hasFile('pdf')) {
+            // Hapus file PDF lama jika ada
+            if ($team->pdf && file_exists(($team->pdf))) {
+                unlink(($team->pdf));
+            }
+
+            $pdfFile = $request->file('pdf');
+            $pdfName = time() . '_' . Str::slug(pathinfo($pdfFile->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $pdfFile->getClientOriginalExtension();
+            $pdfFile->move(('uploads/teams/pdf'), $pdfName);
+            $team->pdf = 'uploads/teams/pdf/' . $pdfName;
         }
 
         $team->name = $request->name;

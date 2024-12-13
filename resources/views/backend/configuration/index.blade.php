@@ -96,20 +96,62 @@
                             </div>
 
 
-                            <div class="col-md mb-3">
-                                <label for="footer" class="form-label">Footer</label>
-                                <input type="text" name="footer"
-                                    class="form-control @error('footer') is-invalid @enderror"
-                                    value="{{ old('footer', $configuration->footer ?? '') }}">
-                                @error('footer')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                            <div class="row">
+                                <div class="col-md mb-3">
+                                    <label for="footer" class="form-label">Footer</label>
+                                    <input type="text" name="footer"
+                                        class="form-control @error('footer') is-invalid @enderror"
+                                        value="{{ old('footer', $configuration->footer ?? '') }}">
+                                    @error('footer')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
 
-                            <!-- Tambahkan input lainnya sesuai kebutuhan -->
+                            <div class="row">
+                                <div class="col-md mb-3">
+                                    <label for="path_alert" class="form-label">Title Image</label>
+                                    <input type="file" name="path_alert" id="path_alert"
+                                        class="form-control @error('path_alert') is-invalid @enderror"
+                                        onchange="previewImage('path_alert', 'pathLogoPreview')">
+                                    @error('path_alert')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
 
-                            <!-- Tombol Submit -->
-                            <button type="submit" class="btn btn-primary w-100">Save</button>
+                                    <!-- Cek jika logo ada di database, tampilkan -->
+                                    @if (isset($configuration->path_alert))
+                                        <img id="pathLogoPreview" src="{{ asset($configuration->path_alert) }}"
+                                            alt="Logo Lama" class="mt-2" style="max-width: 200px;">
+                                    @else
+                                        <img id="pathLogoPreview" src="" alt="Preview Logo" class="mt-2"
+                                            style="max-width: 200px; display: none;">
+                                    @endif
+
+                                    <div class="col-md">
+                                        <div class="form-group form-group-default">
+                                            <label for="pdf">Upload PDF</label>
+                                            <input type="file" name="pdf" id="pdf"
+                                                class="form-control @error('pdf') is-invalid @enderror"
+                                                onchange="previewFileName('pdf', 'pdfPreview')">
+                                            @error('pdf')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div id="pdfPreview" class="text-muted mt-2">
+                                            @if ($configuration->pdf)
+                                                Current PDF: <a href="{{ asset($configuration->pdf) }}"
+                                                    target="_blank">{{ basename($configuration->pdf) }}</a>
+                                            @else
+                                                <span>No PDF uploaded yet.</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tambahkan input lainnya sesuai kebutuhan -->
+
+                                <!-- Tombol Submit -->
+                                <button type="submit" class="btn btn-primary w-100">Save</button>
                         </form>
                     </div>
                 </div>

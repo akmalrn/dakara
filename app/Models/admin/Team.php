@@ -16,5 +16,6 @@ class Team extends Model
         'name',
         'position',
         'description',
+        'pdf',
     ];
 }

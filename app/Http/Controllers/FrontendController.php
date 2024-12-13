@@ -10,6 +10,7 @@ use App\Models\admin\CategoryBlog;
 use App\Models\admin\Configuration;
 use App\Models\admin\NearestSchedule;
 use App\Models\admin\Partner;
+use App\Models\admin\Team;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -67,7 +68,8 @@ class FrontendController extends Controller
     public function consultant()
     {
         $commonData = $this->getCommonData();
-        return view('frontend.pages.consultant', $commonData);
+        $teams = Team::all();
+        return view('frontend.pages.consultant', array_merge($commonData, compact('teams')));
     }
 
     public function pendampingan()

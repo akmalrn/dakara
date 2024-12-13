@@ -14,5 +14,6 @@ class WhyUs extends Model
     protected $fillable = [
         'title',
         'description',
+        'path',
     ];
 }

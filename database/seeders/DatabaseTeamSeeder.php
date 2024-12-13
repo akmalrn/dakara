@@ -18,6 +18,7 @@ class DatabaseTeamSeeder extends Seeder
             'name' => 'nama',
             'position' => 'Wakil',
             'description' => 'deskripsi',
+            'pdf' => 'uploads/teams/pdf/Ini team kami1.pdf',
         ]);
 
         Team::Create([
@@ -25,6 +26,7 @@ class DatabaseTeamSeeder extends Seeder
             'name' => 'nama 2',
             'position' => 'Wakil 2',
             'description' => 'deskripsi 2',
+            'pdf' => 'uploads/teams/pdf/Ini team kami2.pdf',
         ]);
 
         Team::Create([
@@ -32,6 +34,7 @@ class DatabaseTeamSeeder extends Seeder
             'name' => 'nama 3',
             'position' => 'Wakil 3',
             'description' => 'deskripsi 3',
+            'pdf' => 'uploads/teams/pdf/Ini team kami3.pdf',
         ]);
     }
 }
