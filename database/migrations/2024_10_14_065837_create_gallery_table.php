@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('gallery', function (Blueprint $table) {
             $table->id();
+            $table->string('category');
             $table->string('path');
             $table->string('title');
             $table->text('description');

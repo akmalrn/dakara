@@ -22,6 +22,7 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'category' => 'required',
             'path' => 'required|image|mimes:jpeg,png,jpg,gif,webp,svg',
             'title' => 'required',
             'description' => 'required',
@@ -36,9 +37,10 @@ class GalleryController extends Controller
         }
 
         Gallery::create([
-            'path' => 'uploads/gallerys/' . $imageName,  // path gambar yang sudah disimpan di folder 'uploads/gallerys'
-            'title' => $request->title,  // judul dari input form
-            'description' => $request->description,  // deskripsi dari input form
+            'category' => $request->category,
+            'path' => 'uploads/gallerys/' . $imageName,
+            'title' => $request->title,
+            'description' => $request->description,
         ]);
 
         return redirect()->route('gallery.index')->with('success', 'Gallery created successfully.');

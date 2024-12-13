@@ -14,7 +14,7 @@
             <h3 class="text-center mb-4">Our Location</h3>
             <div class="maps-container">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253.2697061455504!2d106.83206290724399!3d-6.181256274029053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6988f52fd72f71%3A0x8e8a6359d5199a80!2sJl.%20Tukang%20Struktur%20No.12%2C%20Jakarta%2C%20Indonesia!5e0!3m2!1sen!2sid!4v1676330514919!5m2!1sen!2sid"
+                    src="{{ $contact->map ?? '' }}"
                     width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
@@ -31,10 +31,10 @@
                         <h4>Hubungi Kami</h4>
 						<br>
                         <p>
-                            WhatsApp&nbsp; : &nbsp;<a href="https://api.whatsapp.com/send?phone=6281314226989"
-                                target="_blank">081314226989</a><br>
-                            Telphone&nbsp; : &nbsp;<a style="color: white;" href="tel:6281218670223">081218670223</a><br>
-                            Telphone&nbsp; : &nbsp;<a style="color: white;" href="tel:6285871140912">085871140912</a>
+                            WhatsApp&nbsp; : &nbsp;<a href="https://wa.me/{{ $contact->phone_number ?? '' }}"
+                                target="_blank">+{{ $contact->phone_number }}</a><br>
+                            Telphone&nbsp; : &nbsp;<a style="color: white;" href="https://wa.me/{{ $contact->phone_number }}" target="blank">+{{ $contact->phone_number }}</a><br>
+                            Telphone&nbsp; : &nbsp;<a style="color: white;" href="https://wa.me/{{ $contact->phone_number }}" target="blank">+{{ $contact->phone_number }}</a>
                         </p>
                     </div>
                 </div>
@@ -45,8 +45,8 @@
                         <i class="fas fa-envelope"></i>
                         <h4>E-mail Kami</h4>
                         <br>
-                        <p>info@dakara-lcaindonesia.com</p>
-                        <p>marketing@dakara-lcaindonesia.com</p>
+                        <p>{{ $contact->email_address ?? '' }}</p>
+                        <p>{{ $contact->email_address_2 ?? '' }}</p>
                     </div>
                 </div>
 
@@ -56,8 +56,7 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <h4>Kantor Kami</h4>
 						<br>
-                        <p>Jl. Raya Lingkar Dramaga-IPB Bogor No.09, RT 05/01 Dramaga Pertokoan Ruko Samping Drama
-                            Cantik-Bogor Jawa Barat 16610</p>
+                        <p>{{ $contact->address ?? '' }}</p>
                     </div>
                 </div>
             </div>

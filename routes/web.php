@@ -71,6 +71,30 @@ Route::middleware(['auth'])->group(function () {
 
     //shedule
     Route::resource('/admin-dashboard/nearest_schedule', \App\Http\Controllers\admin\NearestScheduleController::class);
+
+    //videos
+    Route::resource('/admin-dashboard/videos', \App\Http\Controllers\admin\VideoController::class);
+
+    //nav
+    //profile
+    Route::get('/admin-dashboard/profile', [App\Http\Controllers\admin\nav\ProfileController::class, 'index'])->name('profile.index');
+    Route::post('/admin-dashboard/profile', [App\Http\Controllers\admin\nav\ProfileController::class, 'storeOrUpdate'])->name('profile.store');
+
+    //regis
+    Route::get('/admin-dashboard/registration', [App\Http\Controllers\admin\nav\RegistrationController::class, 'index'])->name('registration.index');
+    Route::post('/admin-dashboard/registration', [App\Http\Controllers\admin\nav\RegistrationController::class, 'storeOrUpdate'])->name('registration.store');
+
+    //certification
+    Route::get('/admin-dashboard/certification', [App\Http\Controllers\admin\nav\CertificationController::class, 'index'])->name('certification.index');
+    Route::post('/admin-dashboard/certification', [App\Http\Controllers\admin\nav\CertificationController::class, 'storeOrUpdate'])->name('certification.store');
+
+    //calculation
+    Route::get('/admin-dashboard/calculation', [App\Http\Controllers\admin\nav\CalculationController::class, 'index'])->name('calculation.index');
+    Route::post('/admin-dashboard/calculation', [App\Http\Controllers\admin\nav\CalculationController::class, 'storeOrUpdate'])->name('calculation.store');
+
+     //compiler
+     Route::get('/admin-dashboard/compiler', [App\Http\Controllers\admin\nav\CompilerController::class, 'index'])->name('compiler.index');
+     Route::post('/admin-dashboard/compiler', [App\Http\Controllers\admin\nav\CompilerController::class, 'storeOrUpdate'])->name('compiler.store');
 });
 
 Route::controller(App\Http\Controllers\FrontendController::class)->group(function () {
@@ -93,5 +117,3 @@ Route::controller(App\Http\Controllers\FrontendController::class)->group(functio
     Route::get('/search', 'search')->name('blog.search');
     Route::get('/videos', 'videos')->name('videos');
 });
-
-

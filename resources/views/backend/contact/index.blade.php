@@ -110,6 +110,16 @@
                                 </div>
                             </div>
 
+                            <div class="col-md mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" name="address"
+                                    class="form-control @error('address') is-invalid @enderror"
+                                    value="{{ old('address', $contact->address ?? '') }}">
+                                @error('address')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
                             <!-- Tambahkan input lainnya sesuai kebutuhan -->
 
                             <!-- Tombol Submit -->

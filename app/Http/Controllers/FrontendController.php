@@ -8,9 +8,19 @@ use App\Models\admin\Contact;
 use App\Models\admin\AboutUs;
 use App\Models\admin\CategoryBlog;
 use App\Models\admin\Configuration;
+use App\Models\admin\Gallery;
+use App\Models\admin\nav\Calculation;
+use App\Models\admin\nav\Certification;
+use App\Models\admin\nav\Compiler;
+use App\Models\admin\nav\Profile;
+use App\Models\admin\nav\Registration;
 use App\Models\admin\NearestSchedule;
 use App\Models\admin\Partner;
+use App\Models\admin\Superiority;
 use App\Models\admin\Team;
+use App\Models\admin\Video;
+use App\Models\admin\WhyUs;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -22,6 +32,7 @@ class FrontendController extends Controller
             'configuration' => Configuration::first(),
             'contact' => Contact::first(),
             'about' => AboutUs::first(),
+            'whyus' => WhyUs::first(),
         ];
     }
 
@@ -31,38 +42,48 @@ class FrontendController extends Controller
         $sliders = Slider::all();
         $blogs = Blog::all();
         $mitras = Partner::all();
-        $schedules = NearestSchedule::orderBy('date', 'asc')->get();
+        $schedules = NearestSchedule::where('date', '>=', Carbon::today())
+            ->orderBy('date', 'asc')
+            ->get();
         return view('frontend.index', array_merge($commonData, compact('sliders', 'blogs', 'mitras', 'schedules')));
     }
 
     public function profile()
     {
         $commonData = $this->getCommonData();
-        return view('frontend.pages.profile', $commonData);
+        $profile = Profile::first();
+        $superioritys = Superiority::all();
+        return view('frontend.pages.profile', array_merge($commonData, compact('profile', 'superioritys')));
     }
 
     public function trainer()
     {
         $commonData = $this->getCommonData();
-        return view('frontend.pages.trainer', $commonData);
+        $teams = Team::all();
+        return view('frontend.pages.trainer', array_merge($commonData, compact('teams')));
     }
 
     public function schedule()
     {
         $commonData = $this->getCommonData();
-        return view('frontend.pages.schedule', $commonData);
+        $schedules = NearestSchedule::where('date', '>=', Carbon::today())
+        ->orderBy('date', 'asc')
+        ->get();
+        return view('frontend.pages.schedule', array_merge($commonData, compact('schedules')));
     }
 
     public function registrasi()
     {
         $commonData = $this->getCommonData();
-        return view('frontend.pages.registrasi', $commonData);
+        $regis = Registration::first();
+        return view('frontend.pages.registrasi', array_merge($commonData, compact('regis')));
     }
 
     public function certificate()
     {
         $commonData = $this->getCommonData();
-        return view('frontend.pages.certificate', $commonData);
+        $certi = Certification::first();
+        return view('frontend.pages.certificate', array_merge($commonData, compact('certi')));
     }
 
     public function consultant()
@@ -75,19 +96,22 @@ class FrontendController extends Controller
     public function pendampingan()
     {
         $commonData = $this->getCommonData();
-        return view('frontend.pages.pendampingan', $commonData);
+        $calcu = Calculation::first();
+        return view('frontend.pages.pendampingan', array_merge($commonData, compact('calcu')));
     }
 
     public function penyusun()
     {
         $commonData = $this->getCommonData();
-        return view('frontend.pages.penyusun', $commonData);
+        $compi = Compiler::first();
+        return view('frontend.pages.penyusun', array_merge($commonData, compact('compi')));
     }
 
     public function galeri()
     {
         $commonData = $this->getCommonData();
-        return view('frontend.pages.galeri', $commonData);
+        $gallerys = Gallery::where('category', 'LCA')->get();
+        return view('frontend.pages.galeri', array_merge($commonData, compact('gallerys')));
     }
 
     public function contact()
@@ -99,25 +123,37 @@ class FrontendController extends Controller
     public function news()
     {
         $commonData = $this->getCommonData();
-        return view('frontend.pages.news', $commonData);
+        $blogs = Blog::whereHas('category', function ($query) {
+            $query->where('category', 'LCA');
+        })
+        ->orderBy('created_at', 'desc')
+        ->paginate(5);
+                $categories = CategoryBlog::all();
+        return view('frontend.pages.news', array_merge($commonData, compact('blogs', 'categories')));
     }
 
     public function gallery()
     {
         $commonData = $this->getCommonData();
-        return view('frontend.pages.gallery', $commonData);
+        $gallerys = Gallery::where('category', 'Gallery')->get();
+        return view('frontend.pages.gallery', array_merge($commonData, compact('gallerys')));
     }
-    
+
     public function videos()
     {
         $commonData = $this->getCommonData();
-        return view('frontend.pages.videos', $commonData);
+        $videos = Video::all();
+        return view('frontend.pages.videos', array_merge($commonData, compact('videos')));
     }
 
     public function blog()
     {
         $commonData = $this->getCommonData();
-        $blogs = Blog::orderBy('created_at', 'desc')->paginate(5);
+        $blogs = Blog::whereHas('category', function ($query) {
+            $query->where('category', '!=', 'LCA');
+        })
+        ->orderBy('created_at', 'desc')
+        ->paginate(5);
         $categories = CategoryBlog::all();
         return view('frontend.pages.blog', array_merge($commonData, compact('blogs', 'categories')));
     }

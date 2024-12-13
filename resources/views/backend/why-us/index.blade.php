@@ -22,6 +22,24 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="col-md mb-3">
+                                    <label for="path" class="form-label">Website Image</label>
+                                    <input type="file" name="path" id="path"
+                                        class="form-control @error('path') is-invalid @enderror"
+                                        onchange="previewImage('path', 'pathPreview')">
+                                    @error('path')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                    <!-- Cek jika gambar ada di database, tampilkan -->
+                                    @if (isset($whyus->path))
+                                        <img id="pathPreview" src="{{ asset($whyus->path) }}" alt="Gambar Lama"
+                                            class="mt-2" style="max-width: 200px;">
+                                    @else
+                                        <img id="pathPreview" src="" alt="Preview Gambar" class="mt-2"
+                                            style="max-width: 200px; display: none;">
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="row">
@@ -34,8 +52,8 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <button type="submit" class="btn btn-primary w-100">Save</button>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Save</button>
                         </form>
                     </div>
                 </div>

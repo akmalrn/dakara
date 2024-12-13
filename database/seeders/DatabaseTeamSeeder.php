@@ -36,5 +36,13 @@ class DatabaseTeamSeeder extends Seeder
             'description' => 'deskripsi 3',
             'pdf' => 'uploads/teams/pdf/Ini team kami3.pdf',
         ]);
+
+        Team::Create([
+            'path' => 'uploads/teams/gambar-4.png',
+            'name' => 'nama 4',
+            'position' => 'Wakil 4',
+            'description' => 'deskripsi 4',
+            'pdf' => 'uploads/teams/pdf/Ini team kami3.pdf',
+        ]);
     }
 }

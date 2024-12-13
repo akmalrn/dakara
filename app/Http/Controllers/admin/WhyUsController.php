@@ -29,17 +29,22 @@ class WhyUsController extends Controller
         ];
 
         if ($request->hasFile('path')) {
-            $oldPath = WhyUs::find(1)->path ?? null;
-            if ($oldPath && File::exists(($oldPath))) {
-                File::delete(($oldPath));
+            $oldPathLogo = WhyUs::find(1)->path ?? null;
+            if ($oldPathLogo && File::exists(($oldPathLogo))) {
+                File::delete(($oldPathLogo));
             }
 
-            $image = $request->file('path');
-            $imageName = time() . '_' . $image->getClientOriginalName();
+            $logo = $request->file('path');
+            $logoName = time() . '_' . $logo->getClientOriginalName();
             $destinationPath = ('uploads/why-us');
-            $image->move($destinationPath, $imageName);
 
-            $data['path'] = 'uploads/why-us/' . $imageName;
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
+
+            $logo->move($destinationPath, $logoName);
+
+            $data['path'] = 'uploads/why-us/' . $logoName;
         }
 
         WhyUs::updateOrCreate(
@@ -49,4 +54,5 @@ class WhyUsController extends Controller
 
         return redirect()->back()->with('success', 'WhyUs has been successfully saved or updated.');
     }
+
 }

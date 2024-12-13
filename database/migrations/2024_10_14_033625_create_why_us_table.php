@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('why_us', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->string('path');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('path')->nullable();
             $table->timestamps();
         });
     }

@@ -14,8 +14,9 @@ class DatabaseWhyUsSeeder extends Seeder
     public function run(): void
     {
         WhyUs::Create([
-            'title' => 'Judul',
-            'description' => 'deskripsi',
+            'title' => 'PT. DAKARA CONSULTING LCA INDONESIA',
+            'description' => 'PT. DAKARA CONSULTING LCA INDONESIA is engaged in environmental services and consulting. In addition to carrying out various training, such as Life Cycle Assessment (LCA) PROPER, Renewable Energy, Training of Heat Exchanger and Radiator, Training of Life Cycle Assessment (TolLCA), Training of Energy Audit, Training of Agricultural Engineering, Training of Bio energy, Training of Jurnal Editor, and Palm Oil Mill.',
+            'path' => 'uploads/why-us/logo-no.png'
         ]);
     }
 }

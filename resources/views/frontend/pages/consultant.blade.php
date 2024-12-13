@@ -20,7 +20,7 @@
         <div class="container">
             <div class="row bg-white" style="padding-top:40px;">
                 @foreach ($teams as $team)
-                    <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="col-md-3 col-sm-6 mb-4">
                         <div class="team-box text-center">
                             <a href="{{ $team->pdf }}" style="color:#999;" target="_blank">
                                 <div class="img-box" style="height: 250px; overflow: hidden;">

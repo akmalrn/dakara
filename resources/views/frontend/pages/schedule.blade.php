@@ -15,6 +15,28 @@
             </div>
         </header><!-- end of main-heading -->
 
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- start of line-box -->
+                <div class="line-box">
+                    <!-- start of line -->
+                    <div class="owl-carouself">
+                        @if ($schedules->isEmpty())
+                        <p class="text-center">Jadwal Kosong</p>
+                    @else
+                        @foreach ($schedules as $schedule)
+                            <div>
+                                <a href="{{ $schedule->path }}" target="_blank">
+                                    <img src="{{ asset($schedule->path) }}" alt="" width="150px" height="150px">
+                                </a>
+                            </div>
+                        @endforeach
+                    @endif
+                    </div>
+                </div><!-- end of line-box -->
+            </div>
+        </div>
+
         <!-- Section Kalender -->
         <div class="container pad-top-md pad-bottom-md">
             <section class="calendar-container">

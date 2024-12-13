@@ -42,23 +42,32 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
+                                            <th>Category</th>
                                             <th>Image</th>
+                                            <th>Title</th>
+                                            <th>Description</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>Categori</th>
                                             <th>Gambar</th>
+                                            <th>Judul</th>
+                                            <th>Deskripsi</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         @foreach ($galleries as $gallery)
                                             <tr>
+                                                <td>{{ $gallery->category }}</td>
                                                 <td>
                                                     <img src="{{ asset($gallery->path) }}" alt="Gallery Image"
                                                         style="width: 100px;">
                                                 </td>
+                                                <td>{{ $gallery->title }}</td>
+                                                <td>{!! \Str::words($gallery->description, 50) !!}</td>
                                                 <td>
                                                     <div class="form-button-action">
                                                         <form action="{{ route('gallery.edit', $gallery->id) }}"

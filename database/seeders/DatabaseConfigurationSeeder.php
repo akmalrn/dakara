@@ -22,7 +22,7 @@ class DatabaseConfigurationSeeder extends Seeder
             'meta_descriptions' => 'Jasa dan Konsultan Lingkungan Hidup',
             'footer' => '© PT. DAKARA CONSULTING LCA INDONESIA, All Rights Reserved.',
             'path_alert' => 'uploads/configuration/logo-no.png',
-            'pdf' => 'uploads/configuration/Ini team kami.pdf',
+            'pdf' => 'uploads/configuration/pdf/Ini team kami.pdf',
         ]);
     }
 }

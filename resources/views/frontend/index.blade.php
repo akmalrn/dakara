@@ -94,32 +94,24 @@
                         <h1 class="srex-hero-one__box__text">
                             <span
                                 class="srex-hero-one__box__text__top d-flex align-items-center gap-3 justify-content-between">
-                                PT. DAKARA CONSULTING LCA INDONESIA
+                               {{ $whyus->title }}
                                 <span class="srex-hero-one__box__text__top__line"></span>
                             </span>
                         </h1>
                         <p class="srex-hero-one__box__desc">
-                            PT. DAKARA CONSULTING LCA INDONESIA is engaged in environmental services and consulting. In
-                            addition to carrying out various training, such as Life Cycle Assessment (LCA) PROPER, Renewable
-                            Energy, Training of Heat Exchanger and Radiator, Training of Life Cycle Assessment (TolLCA),
-                            Training of Energy Audit, Training of Agricultural Engineering, Training of Bio energy, Training
-                            of Jurnal Editor, and Palm Oil Mill.
+                            {!! $whyus->description ?? '' !!}
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-12">
                     <div class="srex-hero-one__right wow ud-fade-in-right" data-wow-delay="200ms">
-                        <img src="{{ asset($configuration->path ?? '') }}" alt="Women with Solar Panel">
+                        <img src="{{ asset($whyus->path ?? '') }}" alt="Women with Solar Panel">
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Hero End -->
-
-
-
-
 
     <!-- About US Start-->
     <section class="srex-about-us-one srex-section">

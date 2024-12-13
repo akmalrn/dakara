@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -265,6 +266,53 @@
                             <a href="{{ route('nearest_schedule.index') }}">
                                 <i class="fas fa-calendar"></i>
                                 <p>Nearest Schedule</p>
+                                <span class="badge badge-secondary"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ Request::is('admin-dashboard/videos') ? 'active' : '' }}">
+                            <a href="{{ route('videos.index') }}">
+                                <i class="fas fa-video"></i>
+                                <p>Video</p>
+                                <span class="badge badge-secondary"></span>
+                            </a>
+                        </li>
+                        <h2 class="ms-4 mt-4">Nav</h2>
+                        <li class="nav-item {{ Request::is('admin-dashboard/profile') ? 'active' : '' }}">
+                            <a href="{{ route('profile.index') }}">
+                                <i class="fas fa-user-circle"></i>
+                                <p>Profile</p>
+                                <span class="badge badge-secondary"></span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item {{ Request::is('admin-dashboard/registration') ? 'active' : '' }}">
+                            <a href="{{ route('registration.index') }}">
+                                <i class="fas fa-user-plus"></i>
+                                <p>Regitration</p>
+                                <span class="badge badge-secondary"></span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item {{ Request::is('admin-dashboard/certification') ? 'active' : '' }}">
+                            <a href="{{ route('certification.index') }}">
+                                <i class="fas fa-certificate"></i>
+                                <p>Certification</p>
+                                <span class="badge badge-secondary"></span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item {{ Request::is('admin-dashboard/calculation') ? 'active' : '' }}">
+                            <a href="{{ route('calculation.index') }}">
+                                <i class="fas fa-table"></i>
+                                <p>Calculation</p>
+                                <span class="badge badge-secondary"></span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item {{ Request::is('admin-dashboard/compiler') ? 'active' : '' }}">
+                            <a href="{{ route('compiler.index') }}">
+                                <i class="fas fa-laptop-code"></i>
+                                <p>Compiler</p>
                                 <span class="badge badge-secondary"></span>
                             </a>
                         </li>
