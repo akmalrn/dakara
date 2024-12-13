@@ -100,6 +100,18 @@ class FrontendController extends Controller
         return view('frontend.pages.news', $commonData);
     }
 
+    public function gallery()
+    {
+        $commonData = $this->getCommonData();
+        return view('frontend.pages.gallery', $commonData);
+    }
+    
+    public function videos()
+    {
+        $commonData = $this->getCommonData();
+        return view('frontend.pages.videos', $commonData);
+    }
+
     public function blog()
     {
         $commonData = $this->getCommonData();

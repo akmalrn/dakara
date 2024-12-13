@@ -1,7 +1,7 @@
 @extends('frontend.layouts')
 
-@section('title', 'Galery')
-@section('title-page', 'Galery')
+@section('title', 'Galeri')
+@section('title-page', 'Galeri')
 
 @section('content')
     @include('frontend.components.page-header')

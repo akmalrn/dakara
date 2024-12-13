@@ -6,26 +6,29 @@
 
     <!-- Section Teks -->
     <!-- start of main-heading -->
-    <header class="main-heading text-center row">
-        <div class="col-xs-12">
-            <h2 class="heading"><span style="background: white; padding:10px; border-radius:5px;">Jadwal Terdekat</span></h2>
+    <section class="wedo-section"
+        style="background: url({{ asset('assetsfront/images/background/tukang-struktur.jpg') }}); overflow-x: hidden; background-size: 150px; border-top: 1px solid #dbdbdb;">
+        <header class="main-heading text-center row">
+            <div class="col-xs-12">
+                <h2 class="heading"><span style="background: white; padding:10px; border-radius:5px;">Jadwal Terdekat</span>
+                </h2>
+            </div>
+        </header><!-- end of main-heading -->
+
+        <!-- Section Kalender -->
+        <div class="container pad-top-md pad-bottom-md">
+            <section class="calendar-container">
+                <div class="calendar-header">
+                    <button class="prev-month">&lt;</button>
+                    <h2 id="calendar-month-year">December 2024</h2>
+                    <button class="next-month">&gt;</button>
+                </div>
+                <div class="calendar-grid">
+                    <!-- Days and dates will be generated dynamically -->
+                </div>
+            </section>
         </div>
-    </header><!-- end of main-heading -->
-
-    <!-- Section Kalender -->
-    <div class="container pad-top-md pad-bottom-md">
-        <section class="calendar-container">
-            <div class="calendar-header">
-                <button class="prev-month">&lt;</button>
-                <h2 id="calendar-month-year">December 2024</h2>
-                <button class="next-month">&gt;</button>
-            </div>
-            <div class="calendar-grid">
-                <!-- Days and dates will be generated dynamically -->
-            </div>
-        </section>
-    </div>
-
+    </section>
     <style>
         /* Section Teks */
 
