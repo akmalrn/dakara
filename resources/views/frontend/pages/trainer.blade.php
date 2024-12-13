@@ -4,9 +4,11 @@
 @section('content')
     @include('frontend.components.page-header')
 
+    <section class="wedo-section"
+style="background: url({{ asset('assetsfront/images/background/tukang-struktur.jpg') }}); overflow-x: hidden; background-size: 150px; border-top: 1px solid #dbdbdb;">
     <div class="container pad-top-md pad-bottom-md">
         <div class="row">
-            <div class="col-xs-12 col-sm-3 mar-bottom-md">
+            <div class="col-xs-12 col-sm-3 mar-bottom-md" style="padding-bottom: 50%">
                 <!-- Start of team-box -->
                 <div class="team-box text-center">
                     <a href="https://dakara-lcaindonesia.com/dev/file/trainer/NEW_CV_Dr_Kiman_Siregar,S_TP,M_Si_Expert_LCA_dari_ILCAN__Okt_2020_ok.pdf"
@@ -25,5 +27,6 @@
             </div>
         </div>
     </div>
+    </section>
 
 @endsection
