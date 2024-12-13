@@ -17,12 +17,41 @@
         .product-box {
             flex: 1 1 calc(50% - 15px); /* Setiap produk box akan mengambil setengah lebar dari kontainer */
             box-sizing: border-box;
+            overflow: hidden;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .product-box img {
             width: 100%; /* Membuat gambar mengambil 100% dari kontainer */
             height: auto;
-            margin-top: 40px; /* Memberikan jarak atas pada gambar */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product-box img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-box .box {
+            padding: 20px;
+        }
+
+        .product-box .box h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .product-box .box a {
+            color: #4e73df;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .product-box .box a:hover {
+            color: #2e59d9;
         }
 
         @media (max-width: 768px) {
@@ -30,9 +59,18 @@
                 flex: 1 1 100%; /* Pada layar lebih kecil, setiap item akan memakan penuh lebar */
             }
         }
+
+        /* Background hanya muncul sekali */
+        .background-container {
+            background-image: url('/assetsfront/images/background/tukang-struktur.jpg'); /* Ganti dengan gambar sesuai kebutuhan */
+            background-size:15%; /* Memastikan gambar mengisi seluruh kontainer */
+            background-repeat: repeat; /* Tidak mengulang gambar */
+            background-position: center center; /* Memastikan gambar berada di tengah */
+            padding: 100px 0; /* Memberikan padding atas dan bawah lebih besar agar konten terlihat lebih jelas */
+        }
     </style>
 
-    <div class="container pad-top-md pad-bottom-md">
+    <div class="container pad-top-md pad-bottom-md background-container">
         <div class="row">
             <!-- start of isotop-holder -->
             <div id="isotop-holder">
@@ -72,4 +110,5 @@
             </div><!-- end of isotop-holder -->
         </div>
     </div>
+
 @endsection
